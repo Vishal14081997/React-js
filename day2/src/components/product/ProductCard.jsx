@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Card from './Card';
 
-const Product = () => {
+const ProductCard = () => {
   const [data, setData] = useState([])
   
   const fetchData = async () => {
@@ -37,4 +37,4 @@ const Product = () => {
   )
 }
 
-export default Product;
+export default ProductCard;
