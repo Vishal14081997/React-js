@@ -8,7 +8,6 @@ const Child = ({ heading, title }) => {
                 <h1>{heading}</h1>
                 <h2>{title}</h2>
             </div>
-
         </>
     )
 }

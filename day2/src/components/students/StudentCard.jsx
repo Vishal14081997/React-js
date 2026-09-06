@@ -21,35 +21,35 @@
 
 //------------------- 2nd --------------------
 
-// import React from "react";
-// import StudentInfo from "./StudentInfo";
+import React from "react";
+import StudentInfo from "./StudentInfo";
 
-// const StudentCard = ({ student, onDelete }) => {
-//   // console.log(student);
+const StudentCard = ({ student, onDelete }) => {
+  // console.log(student);
   
-//   return (
-//     <div className="bg-black text-white p-5 rounded-2xl">
+  return (
+    <div className="bg-black text-white p-5 rounded-2xl">
 
-//       <StudentInfo
-//         name={student.name}
-//         age={student.age}
-//         rollNo={student.rollNo}
-//         studentClass={student.class}
-//       />
+      <StudentInfo
+        name={student.name}
+        age={student.age}
+        rollNo={student.rollNo}
+        studentClass={student.class}
+      />
 
-//       <div className="flex justify-center">
+      <div className="flex justify-center">
 
-//         <button
-//           onClick={() => onDelete(student.id)}
-//           className="bg-red-700 px-4 py-2 mt-4 rounded-2xl"
-//         >
-//           Delete
-//         </button>
+        <button
+          onClick={() => onDelete(student.id)}
+          className="bg-red-700 px-4 py-2 mt-4 rounded-2xl"
+        >
+          Delete
+        </button>
 
-//       </div>
+      </div>
 
-//     </div>
-//   );
-// };
+    </div>
+  );
+};
 
-// export default StudentCard;
+export default StudentCard;
