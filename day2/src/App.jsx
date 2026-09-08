@@ -153,98 +153,88 @@
 //------------ 3rd --------------------
 
 
-// import React from 'react'
+// import React, { useState } from 'react'
 // import Child from './components/Child'
 // import ProductChild from './components/product/ProductChild'
 // import ProductCard from './components/product/ProductCard'
 
-
 // const App = () => {
-//   let data = [
-//     {
-//       id: 1,
-//       title: "iphone",
-//       des: "this is iphone series of apple",
-//       price: 2000,
-//       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqioZaF8ShdcKs1hmTi4Qtp80R065OP3CA2eE2aI6NIw&s"
-//     },
-//     {
-//       id: 2,
-//       title: "sumsung s24 5g",
-//       des: "this is series of A34",
-//       price: 2000,
-//       image: "	https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/b/j/o/-original-imahft5nm9eewyzh.jpeg?q=70"
-//     },
-//     {
-//       id: 2,
-//       title: "sumsung s24 5g",
-//       des: "this is series of A34",
-//       price: 2000,
-//       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSAK3kKQPuzcE1wev2IQDn0MSRCWo93eV8jp4d2mxhRQ&s"
-//     },
-//     {
-//       id: 2,
-//       title: "sumsung s24 5g",
-//       des: "this is series of A34",
-//       price: 2000,
-//       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSAK3kKQPuzcE1wev2IQDn0MSRCWo93eV8jp4d2mxhRQ&s"
-//     },
-//     {
-//       id: 2,
-//       title: "sumsung s24 5g",
-//       des: "this is series of A34",
-//       price: 2000,
-//       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSAK3kKQPuzcE1wev2IQDn0MSRCWo93eV8jp4d2mxhRQ&s"
-//     },
-//     {
-//       id: 2,
-//       title: "sumsung s24 5g",
-//       des: "this is series of A34",
-//       price: 2000,
-//       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSAK3kKQPuzcE1wev2IQDn0MSRCWo93eV8jp4d2mxhRQ&s"
-//     },
-//     {
-//       id: 2,
-//       title: "sumsung s24 5g",
-//       des: "this is series of A34",
-//       price: 2000,
-//       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSAK3kKQPuzcE1wev2IQDn0MSRCWo93eV8jp4d2mxhRQ&s"
-//     },
-//     {
-//       id: 2,
-//       title: "sumsung s24 5g",
-//       des: "this is series of A34",
-//       price: 2000,
-//       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSAK3kKQPuzcE1wev2IQDn0MSRCWo93eV8jp4d2mxhRQ&s"
-//     }
-//   ]
-
-//   return (
-//     <>
-//       <div className='flex bg-amber-400 gap-10 p-5 justify-between'>
-//         <Child heading="my name vishal singh" title="Child-1 components" />
-//         <Child heading="my name vishal singh" title="Child-1 components" />
-//         <Child heading="my name vishal singh" title="Child-1 components" />
-//         <Child heading="my name vishal singh" title="Child-1 components" />
-//       </div>
-
-//       <div className='mt-10 flex gap-10 flex-wrap'>
+//     let productData = [
 //         {
-//           data.map((item, index) => {
-//             return (
-//               <>
-//                 <ProductChild productData={item} />
-//               </>
-//             )
-//           })
+//             id: 1,
+//             title: "sumsung s24 5g",
+//             des: "this is series of A34",
+//             price: 2000,
+//             image: "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/b/j/o/-original-imahft5nm9eewyzh.jpeg?q=70"
+//         },
+//         {
+//             id: 2,
+//             title: "sumsung s24 5g",
+//             des: "this is series of A34",
+//             price: 2000,
+//             image: "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/b/j/o/-original-imahft5nm9eewyzh.jpeg?q=70"
+//         },
+//         {
+//             id: 3,
+//             title: "sumsung s24 5g",
+//             des: "this is series of A34",
+//             price: 2000,
+//             image: "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/b/j/o/-original-imahft5nm9eewyzh.jpeg?q=70"
+//         },
+//         {
+//             id: 4,
+//             title: "sumsung s24 5g",
+//             des: "this is series of A34",
+//             price: 2000,
+//             image: "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/b/j/o/-original-imahft5nm9eewyzh.jpeg?q=70"
 //         }
-//       </div>
+//     ]
+//     const [data, setData] = useState(productData);
 
-//       <div>
-//         <ProductCard/>
-//       </div>
-//     </>
-//   )
+//     const changeProduct = (id) => {
+//         console.log(id);
+//         setData((oldData) => {
+//             return oldData.map((item) => {
+//                 if (item.id === id) {
+//                     return {
+//                         ...item,
+//                         title: "Updated Product",
+//                         des: "All product data changed",
+//                         price: 5000,
+//                         image: "https://m.media-amazon.com/images/I/71ju4kS-W8L._AC_UF1000,1000_QL80_.jpg"
+//                     };
+//                 }
+//                 return item;
+//             });
+//         });
+//     };
+
+//     return (
+//         <>
+//             <div className='flex bg-amber-400 gap-10 p-5 justify-between'>
+//                 <Child heading="my name vishal singh" title="Child-1 components" />
+//                 <Child heading="my name vishal singh" title="Child-1 components" />
+//                 <Child heading="my name vishal singh" title="Child-1 components" />
+//                 <Child heading="my name vishal singh" title="Child-1 components" />
+//             </div>
+
+//             <div className='mt-10 flex gap-10 justify-between p-10'>
+//                 {
+//                     data.map((item) => {
+//                         return (
+//                             <>
+//                                 <ProductChild productData={item} changeProduct={changeProduct} />
+//                             </>
+//                         )
+//                     })
+//                 }
+//             </div>
+
+//             <div>
+//                 <ProductCard />
+//             </div>
+//         </>
+//     )
 // }
 // export default App
 

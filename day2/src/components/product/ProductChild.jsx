@@ -1,16 +1,15 @@
-import React from 'react'
+//------------ 3rd --------------------
 
-const ProductChild = ({productData}) => {
+const ProductChild = ({ productData, changeProduct }) => {
     // console.log(productData);
-    
     return (
         <>
             <div className='bg-gray-200 flex flex-col items-center rounded-2xl p-4 '>
-                <img  className='rounded-2xl' src={productData.image} width={180} alt="" />
+                <img className='rounded-2xl' src={productData.image} width={180} alt="" />
                 <h1 className='font-bold'>{productData.title}</h1>
                 <p>{productData.des}</p>
                 <p>{productData.price}</p>
-                <button className='bg-blue-600 px-10 py-1 rounded-2xl font-semibold text-white'>click me</button>
+                <button className='bg-blue-600 px-10 py-1 rounded-2xl font-semibold text-white' onClick={() => changeProduct(productData.id)}>click me</button>
             </div>
         </>
     )
