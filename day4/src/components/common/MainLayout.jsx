@@ -8,12 +8,13 @@ import { store } from '../../redux/store'
 const MainLayout = () => {
     return (
         <Provider store={store}>
-            <Header />
-            <div>
-                <Outlet />
+            <div className='py-0 px-6'>
+                <Header />
+                <div>
+                    <Outlet />
+                </div>
+                <Footer />
             </div>
-
-            <Footer />
         </Provider>
     )
 }

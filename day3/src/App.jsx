@@ -98,248 +98,230 @@
 
 //--------------- 4th ----------------
 
+import React, { useState } from 'react';
+
+function App() {
+    // const [firstname, setFirstname] = useState('');
+    // const [lastname, setLastname] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
+
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const [formData, setFormData] = useState({ firstname: "", lastname: "", email: "", password: "" })
+
+    const handleChange = (e) => {
+        console.log(e.target.value)
+        console.log(e.target.name)
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+        console.log(formData)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setIsSubmitted(true);
+        // console.log(email, password, lastname, firstname);
+    };
+    return (
+        <div className='flex'>
+            <form
+                onSubmit={handleSubmit}
+                className="w-full max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md"
+            >
+                <h2 className="text-2xl font-bold mb-5 text-gray-800">
+                    Registration Form
+                </h2>
+
+                <label htmlFor="firstname" className="block mb-1 text-gray-700">
+                    Firstname
+                </label>
+                <input
+                    // onChange={(e) => setFirstname(e.target.value)}
+                    onChange={handleChange}
+                    type="text"
+                    name="firstname"
+                    value={formData.firstname}
+                    className="w-full border border-gray-300 rounded-md px-3 py-2 mb-4 outline-none focus:border-blue-500"
+                />
+
+                <label htmlFor="lastname" className="block mb-1 text-gray-700">
+                    Lastname
+                </label>
+                <input
+                    // onChange={(e) => setLastname(e.target.value)}
+                    onChange={handleChange}
+                    type="text"
+                    name="lastname"
+                    value={formData.lastname}
+                    className="w-full border border-gray-300 rounded-md px-3 py-2 mb-4 outline-none focus:border-blue-500"
+                />
+
+                <label htmlFor="email" className="block mb-1 text-gray-700">
+                    Email
+                </label>
+                <input
+                    // onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleChange}
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    className="w-full border border-gray-300 rounded-md px-3 py-2 mb-4 outline-none focus:border-blue-500"
+                />
+
+                <label htmlFor="password" className="block mb-1 text-gray-700">
+                    Password
+                </label>
+                <input
+                    // onChange={(e) => setPassword(e.target.value)}
+                    onChange={handleChange}
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    className="w-full border border-gray-300 rounded-md px-3 py-2 mb-5 outline-none focus:border-blue-500"
+                />
+
+                <button
+                    type="submit"
+                    className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+                >
+                    Submit
+                </button>
+            </form>
+
+            {isSubmitted && (
+                <div className="w-full max-w-md bg-white p-6 rounded-lg shadow">
+                    <h2 className="text-2xl font-bold mb-6 text-gray-800">
+                        Submitted Data
+                    </h2>
+
+                    <div className="space-y-3 text-gray-700">
+                        <p>
+                            <span className="font-semibold">Firstname:</span>{" "}
+                            {formData.firstname}
+                        </p>
+
+                        <p>
+                            <span className="font-semibold">Lastname:</span>{" "}
+                            {formData.lastname}
+                        </p>
+
+                        <p>
+                            <span className="font-semibold">Email:</span>{" "}
+                            {formData.email}
+                        </p>
+
+                        <p>
+                            <span className="font-semibold">Password:</span>{" "}
+                            {formData.password}
+                        </p>
+                    </div>
+                </div>
+            )}
+
+
+
+        </div >
+    );
+}
+export default App;
+
+// -------------- 5th ---------------------
+
 // import React, { useState } from 'react';
 
 // function App() {
-//     const [firstname, setFirstname] = useState('');
-//     const [lastname, setLastname] = useState('');
-//     const [email, setEmail] = useState('');
-//     const [password, setPassword] = useState('');
+//     const [step, setStep] = useState(1);
+
+//     const handleStepIncrease = () => {
+//         setStep((prev) => prev + 1);
+//     };
+
+//     const handlePreviousClick = () => {
+//         setStep((prev) => prev - 1);
+//     };
+
 //     const handleSubmit = (e) => {
 //         e.preventDefault();
-//         console.log(email, password, lastname, firstname)
-//     }
+//         console.log("Form Submitted");
+//     };
+
 //     return (
-//         <div className='flex'>
-//             <form
-//                 onSubmit={handleSubmit}
-//                 className="w-full max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md"
-//             >
-//                 <h2 className="text-2xl font-bold mb-5 text-gray-800">
-//                     Registration Form
-//                 </h2>
+//         <form onSubmit={handleSubmit}>
 
-//                 <label htmlFor="firstname" className="block mb-1 text-gray-700">
-//                     Firstname
-//                 </label>
-//                 <input
-//                     onChange={(e) => setFirstname(e.target.value)}
-//                     type="text"
-//                     name="firstname"
-//                     value={firstname}
-//                     className="w-full border border-gray-300 rounded-md px-3 py-2 mb-4 outline-none focus:border-blue-500"
-//                 />
+//             <h3 style={{ color: step === 1 ? 'green' : 'black' }}>
+//                 Name
+//             </h3>
 
-//                 <label htmlFor="lastname" className="block mb-1 text-gray-700">
-//                     Lastname
-//                 </label>
-//                 <input
-//                     onChange={(e) => setLastname(e.target.value)}
-//                     type="text"
-//                     name="lastname"
-//                     value={lastname}
-//                     className="w-full border border-gray-300 rounded-md px-3 py-2 mb-4 outline-none focus:border-blue-500"
-//                 />
+//             <h3 style={{ color: step === 2 ? 'green' : 'black' }}>
+//                 Password Details
+//             </h3>
 
-//                 <label htmlFor="email" className="block mb-1 text-gray-700">
-//                     Email
-//                 </label>
-//                 <input
-//                     onChange={(e) => setEmail(e.target.value)}
-//                     type="email"
-//                     name="email"
-//                     value={email}
-//                     className="w-full border border-gray-300 rounded-md px-3 py-2 mb-4 outline-none focus:border-blue-500"
-//                 />
+//             <h3 style={{ color: step === 3 ? 'green' : 'black' }}>
+//                 Marksheet
+//             </h3>
 
-//                 <label htmlFor="password" className="block mb-1 text-gray-700">
-//                     Password
-//                 </label>
-//                 <input
-//                     onChange={(e) => setPassword(e.target.value)}
-//                     type="password"
-//                     name="password"
-//                     value={password}
-//                     className="w-full border border-gray-300 rounded-md px-3 py-2 mb-5 outline-none focus:border-blue-500"
-//                 />
+//             {/* Step 1 */}
+//             {step === 1 && (
+//                 <>
+//                     <input
+//                         type="text"
+//                         placeholder="Enter your name"
+//                     />
 
-//                 <button
-//                     type="submit"
-//                     className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
-//                 >
-//                     Submit
-//                 </button>
-//             </form>
+//                     <input
+//                         type="text"
+//                         placeholder="Enter your lastname"
+//                     />
 
+//                     <button type="button" onClick={handleStepIncrease}>
+//                         Next
+//                     </button>
+//                 </>
+//             )}
 
-//             <div className="w-full max-w-md mx-auto mt-6 p-6 bg-white rounded-xl shadow-md border">
-//                 <h1 className="text-2xl font-bold text-gray-800 mb-5">
-//                     Live Preview
-//                 </h1>
+//             {/* Step 2 */}
+//             {step === 2 && (
+//                 <>
+//                     <input
+//                         type="password"
+//                         placeholder="Enter your password"
+//                     />
 
-//                 <div className="space-y-4">
-//                     <div className="flex justify-between border-b pb-2">
-//                         <span className="font-semibold text-gray-600">Firstname</span>
-//                         <span className="text-gray-800">{firstname}</span>
-//                     </div>
+//                     <input
+//                         type="number"
+//                         placeholder="Enter your age"
+//                     />
 
-//                     <div className="flex justify-between border-b pb-2">
-//                         <span className="font-semibold text-gray-600">Lastname</span>
-//                         <span className="text-gray-800">{lastname}</span>
-//                     </div>
+//                     <button type="button" onClick={handleStepIncrease}>
+//                         Next
+//                     </button>
 
-//                     <div className="flex justify-between border-b pb-2">
-//                         <span className="font-semibold text-gray-600">Email</span>
-//                         <span className="text-gray-800">{email}</span>
-//                     </div>
+//                     <button type="button" onClick={handlePreviousClick}>
+//                         Prev
+//                     </button>
+//                 </>
+//             )}
 
-//                     <div className="flex justify-between">
-//                         <span className="font-semibold text-gray-600">Password</span>
-//                         <span className="text-gray-800">{password}</span>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
+//             {/* Step 3 */}
+//             {step === 3 && (
+//                 <>
+//                     <label>Upload marksheet</label>
+
+//                     <input type="file" />
+
+//                     <button type="button" onClick={handlePreviousClick}>
+//                         Prev
+//                     </button>
+
+//                     <button type="submit">
+//                         Submit Form
+//                     </button>
+//                 </>
+//             )}
+//         </form>
 //     );
 // }
 // export default App;
 
-// -------------- 5th ---------------------
 
-// import React from 'react';
-// import { useState } from 'react';
-// function App() {
-//   const [step, setStep] = useState(1);
-//   const handleStepIncrease = () => {
-//     setStep((prev) => {
-//       return prev + 1;
-//     });
 
-//     // setStep(2)
-//   };
-
-//   const handlePreviousClick = () => {
-//     setStep((prev) => prev - 1);
-//   };
-//   return (
-//     <form>
-//       <h3 style={{ color: step === 1 ? 'green' : 'black' }}>Name</h3>
-//       <h3 style={{ color: step === 2 ? 'green' : 'black' }}>password details</h3>
-//       <h3 style={{ color: step === 3 ? 'green' : 'black' }}>Marksheet</h3>
-//       {step === 1 && (
-//         <>
-//           <input type="" placeholder="enter your name" />
-//           <input type="" placeholder="enter your lastname" />
-//           <button onClick={handleStepIncrease}>Next</button>
-//         </>
-//       )}
-
-//       {step === 2 && (
-//         <>
-//           <input type="passowrd" placeholder="enter your password" />
-//           <input type="number" placeholder="enter your age" />
-//           <button onClick={handleStepIncrease}>next</button>
-//           <button onClick={handlePreviousClick}>prev</button>
-//         </>
-//       )}
-
-//       {step === 3 && (
-//         <>
-//           <label>upload marksheet</label>
-//           <input type="file" />
-//           <button onClick={handlePreviousClick}>prev</button>
-//           <button>Submit form</button>
-//         </>
-//       )}
-//     </form>
-//   );
-// }
-
-// export default App;
-
-// ------------- 6th ------------------------
-
-// import React, { useState } from 'react';
-
-// function App() {
-//   // const [firstname, setFirstname] = useState('');
-//   // const [lastname, setLastname] = useState('');
-//   // const [email, setEmail] = useState('');
-//   // const [password, setPassword] = useState('');
-//   const [isSubmitted, setIsSubmitted] = useState(false);
-
-//   const [formData, setFormData] = useState({ firstname: "", lastname: "", email: "", password: "" })
-
-//   const handleChange = (e) => {
-//     console.log(e.target.value)
-//     console.log(e.target.name)
-//     setFormData({ ...formData, [e.target.name]: e.target.value })
-//     console.log(formData)
-//   }
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     setIsSubmitted(true);
-//     // console.log(email, password, lastname, firstname);
-//     // setFirstname('');
-
-//     // setLastname('');
-//     // setEmail('');
-//     // setPassword('');
-//   };
-//   return (
-//     <div>
-//       <form onSubmit={handleSubmit}>
-//         <label htmlFor="firstname">Firstname</label>
-//         <input
-//           onChange={handleChange}
-//           type="text"
-//           name="firstname"
-//           value={formData.firstname}
-//         />{' '}
-//         <br />
-//         <label htmlFor="lastname">Lastname</label>
-//         <input
-//           onChange={handleChange}
-//           type="text"
-//           name="lastname"
-//           value={formData.lastname}
-//         />{' '}
-//         <br />
-//         <label htmlFor="email">Email</label>
-//         <input
-//           onChange={handleChange}
-//           type="email"
-//           name="email"
-//           value={formData.email}
-//         />{' '}
-//         <br />
-//         <label htmlFor="password">Password</label>
-//         <input
-//           onChange={handleChange}
-//           type="password"
-//           name="password"
-//           value={formData.password}
-//         />
-//         <button>Submit</button>
-//       </form>
-
-//       <h1>Live Preview</h1>
-//       <p>firstname : {formData.firstname} </p>
-//       <p>lastname : {formData.lastname}</p>
-//       <p>email: {formData.email}</p>
-//       <p>password: {formData.password} </p>
-
-//       {isSubmitted ? (
-//         <div>
-//           <h1>Form data</h1>
-//           <p>{formData.email}</p>
-//           <p>{formData.firstname}</p>
-//           <p>{formData.lastname}</p>
-//         </div>
-//       ) : null}
-//     </div>
-//   );
-// }
-
-// export default App;
