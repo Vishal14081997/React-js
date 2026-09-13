@@ -19,7 +19,16 @@ export const cartSlice = createSlice({
             state.cart = state.cart.filter((item) => item.id !== id)
             localStorage.setItem("CART", JSON.stringify(state.cart))
         },
-        changeQty: (state) => {
+        changeQty: (state, reqData) => {
+            // console.log(reqData.payload);
+            const { id, finalQty } = reqData.payload;
+            state.cart = state.cart.filter((item) => {
+                if (item.id == id) {
+                    item.qty = finalQty
+                }
+                return item
+            })
+            localStorage.setItem("CART", JSON.stringify(state.cart))
 
         },
     },

@@ -1,15 +1,16 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
-import { deleteCart } from '../redux/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeQty, deleteCart } from '../redux/cartSlice';
 
 const CartRow = ({ data }) => {
     // console.log(data);
+
     const dispatch = useDispatch()
     const removeItem = () => {
         dispatch(deleteCart(data.id))
     }
 
-    const changeQty = (type) => {
+    const updateQty = (type) => {
         let qty = data.qty;
 
         let finalQty = qty;
@@ -21,7 +22,7 @@ const CartRow = ({ data }) => {
             }
         }
         // console.log(finalQty);
-        dispatch(updateQty())
+        dispatch(changeQty({ id: data.id, finalQty }))
     }
 
     return (
@@ -37,7 +38,7 @@ const CartRow = ({ data }) => {
                 <div className="flex items-center justify-between md:order-3 md:justify-end">
                     <div className="flex items-center">
                         <button
-                            onClick={() => changeQty("-")}
+                            onClick={() => updateQty("-")}
                             type="button"
                             id="decrement-button"
                             data-input-counter-decrement="counter-input"
@@ -51,11 +52,11 @@ const CartRow = ({ data }) => {
                             data-input-counter=""
                             className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white"
                             placeholder=""
-                            defaultValue={data.qty}
+                            value={data.qty}
                             required=""
                         />
                         <button
-                            onClick={() => changeQty("+")}
+                            onClick={() => updateQty("+")}
                             type="button"
                             id="increment-button"
                             data-input-counter-increment="counter-input"
