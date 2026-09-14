@@ -1,18 +1,45 @@
-// import React from 'react'
-// import UserInfo from './components/UserInfo'
-// import UserProvider from './context/UserProvider'
+// ---------------- 1st ------------------------------
+
+// import React, { createContext, useState } from 'react'
+// import ChildC from './ChildC'
+// import ChildB from './ChildB'
+
+// export const UserContext = createContext()
 
 // const App = () => {
-//   return (
-//     <>
-//       <UserProvider>
-//         <UserInfo />
-//       </UserProvider>
-//     </>
-//   )
+//     const [user, setUser] = useState({ name: "vishal" })
+//     const [count, setCount] = useState(0)
+//     const data = { user, count, setCount }
+//     return (
+//         <>
+//             <UserContext.Provider value={data}>
+//                 <ChildC />
+//                 <ChildB/>
+//             </UserContext.Provider>
+//         </>
+//     )
 // }
 
 // export default App
+
+//--------------- 2nd -------------------------
+
+import React from 'react'
+import Home from './Home'
+import CounterContext from './context/CounterContext'
+import ThemeContext from './context/ThemeContext'
+
+const App = () => {
+    return (
+        <CounterContext>
+            <ThemeContext>
+                <Home />
+            </ThemeContext>
+        </CounterContext>
+    )
+}
+
+export default App
 
 //--------------- 2nd -------------------------
 
