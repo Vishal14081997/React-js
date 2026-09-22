@@ -4,6 +4,9 @@ import { Link } from 'react-router'
 
 const Header = () => {
     let cart = useSelector((myStore) => myStore.cartStore.cart);
+    let myData = useSelector((myStore)=>myStore.counterStore.count)
+    console.log(myData);
+    
     return (
         <>
             <div>
@@ -25,6 +28,9 @@ const Header = () => {
                                         <Link to={"/cart"} className="text-heading hover:underline">
                                             Cart({cart.length})
                                         </Link>
+                                    </li>
+                                    <li>
+                                           Count {myData}
                                     </li>
                                 </ul>
                             </div>

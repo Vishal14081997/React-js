@@ -23,10 +23,10 @@ const Home = () => {
 
   return (
     <div>
-      {/* <h1>Home</h1>
+      <h1>Home</h1>
       <button
         onClick={() => dispatch(increment())}
-        className='p-2 bg-amber-400 text-black font-bold rounded-2xl ' > Change increment</button> */}
+        className='p-2 bg-amber-400 text-black font-bold rounded-2xl ' > Change increment</button>
 
       <section>
         <h1 className='text-center font-bold text-2xl'>Our Product</h1>
