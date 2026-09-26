@@ -22,12 +22,12 @@ export const cartSlice = createSlice({
         changeQty: (state, reqData) => {
             // console.log(reqData.payload);
             const { id, finalQty } = reqData.payload;
-            state.cart = state.cart.filter((item) => {
-                if (item.id == id) {
-                    item.qty = finalQty
-                }
-                return item
-            })
+            const item = state.cart.find(
+                (item) => item.id == id
+            );
+            if (item) {
+                item.qty = finalQty;
+            }
             localStorage.setItem("CART", JSON.stringify(state.cart))
 
         },
