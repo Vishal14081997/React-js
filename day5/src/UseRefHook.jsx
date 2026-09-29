@@ -19,9 +19,10 @@ const UseRefHook = () => {
         <div>
             <h1>{nameRef.current}</h1>
             <input ref={inputRef} type="text" placeholder='Enter user name' />
-            <button onClick={inputHandler}>Focus Input</button>
 
-            <button onClick={toggleHandler}>Toggle</button>
+            <button className='bg-amber-300 ' onClick={inputHandler}>Focus Input</button>
+            <br />
+            <button className='bg-gray-500' onClick={toggleHandler}>Toggle</button>
         </div>
     )
 }
